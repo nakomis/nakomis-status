@@ -1,35 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from 'react'
+import { ServiceStatus } from './components/ServiceStatus'
+import type { HeartbeatResult } from './services/heartbeat'
 
-function App() {
-  const [count, setCount] = useState(0)
+export function App() {
+  const [results, setResults] = useState<HeartbeatResult[]>([])
+
+  useEffect(() => {
+    async function refresh() {
+      try {
+        const response = await fetch('/api/status')
+        const data: HeartbeatResult[] = await response.json()
+        setResults(data)
+      } catch {
+        setResults([])
+      }
+    }
+
+    refresh()
+    const interval = setInterval(refresh, 30_000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <main>
+      <h1>nakomis status</h1>
+      {results.length === 0 ? (
+        <p>Loading…</p>
+      ) : (
+        results.map((result) => (
+          <ServiceStatus key={result.service} {...result} />
+        ))
+      )}
+    </main>
   )
 }
-
-export default App
