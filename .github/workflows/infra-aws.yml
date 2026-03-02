@@ -1,0 +1,50 @@
+name: AWS Infra
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'infra/aws/**'
+  pull_request:
+    paths:
+      - 'infra/aws/**'
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    defaults:
+      run:
+        working-directory: infra/aws
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # GCP auth — needed to read/write the GCS state backend
+      - uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      # AWS auth — keyless OIDC using the role created by the bootstrap apply
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_INFRA_ROLE_ARN }}
+          aws-region: eu-west-1
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "~> 1.6"
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform plan
+        run: terraform plan -var="aws_profile=" -out=tfplan
+
+      - name: Terraform apply
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        run: terraform apply tfplan

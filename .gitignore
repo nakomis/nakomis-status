@@ -1,14 +1,14 @@
 # Terraform
-terraform/.terraform/
-terraform/.terraform.lock.hcl
-terraform/terraform.tfvars
-terraform/*.tfplan
-terraform/tfplan
+infra/**/.terraform/
+infra/**/.terraform.lock.hcl
+infra/**/terraform.tfvars
+infra/**/*.tfplan
+infra/**/tfplan
 
 # GCP credentials — never commit these
 terraform-key.json
 
-# Node
+# Node (matches anywhere in tree)
 node_modules/
 dist/
 dist-server/
