@@ -15,6 +15,9 @@ variable "region" {
   default     = "europe-west1"
 }
 
+# Bootstrap default — used for the initial `terraform apply` before the real image is built.
+# Once deployed, image updates are managed via `gcloud run services update --image=...` in CI/CD.
+# Do not run `terraform apply` without setting this in terraform.tfvars if a real image is deployed.
 variable "image" {
   description = "Docker image to deploy to Cloud Run"
   type        = string
