@@ -49,9 +49,7 @@ export function App() {
   return (
     <main>
       <header className="page-header">
-        <h1 className="page-title">
-          nakomis<span className="page-title__accent">.</span>
-        </h1>
+        <h1 className="page-title">Nakomis Softworks</h1>
         <p className="page-subtitle">service status</p>
       </header>
 

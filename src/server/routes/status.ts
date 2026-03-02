@@ -5,6 +5,8 @@ const router = Router()
 
 const SERVICES = [
   { name: 'nakom.is', url: 'https://nakom.is' },
+  { name: 'sandbox.nakomis.com', url: 'https://sandbox.nakomis.com' },
+  { name: 'blog.nakom.is', url: 'https://blog.nakom.is' },
 ]
 
 router.get('/', async (_req, res) => {
