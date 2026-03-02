@@ -1,23 +1,22 @@
 #root {
   max-width: 680px;
   margin: 0 auto;
-  padding: 5rem 2rem 8rem;
+  padding: 3rem 1.5rem 6rem;
 }
 
 /* ── Page header ── */
 
 .page-header {
-  margin-bottom: 2.5rem;
-  animation: fade-up 0.5s ease both;
+  margin-bottom: 1.5rem;
+  animation: fade-up 0.4s ease both;
 }
 
 .page-title {
-  font-family: 'Unbounded', sans-serif;
-  font-size: clamp(2rem, 7vw, 3.75rem);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  margin: 0 0 0.6rem;
+  font-size: clamp(1.75rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
   color: var(--text);
 }
 
@@ -26,9 +25,9 @@
 }
 
 .page-subtitle {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   margin: 0;
 }
@@ -39,33 +38,32 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 2rem;
-  padding: 0.45rem 0.8rem;
-  border-radius: 3px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
   border: 1px solid transparent;
-  animation: fade-up 0.5s 0.1s ease both;
+  animation: fade-up 0.4s 0.08s ease both;
 }
 
 .status-banner--operational {
   color: var(--up);
   background: var(--up-bg);
-  border-color: rgba(0, 223, 151, 0.18);
+  border-color: rgba(76, 175, 80, 0.25);
 }
 
 .status-banner--degraded {
   color: var(--down);
   background: var(--down-bg);
-  border-color: rgba(255, 75, 92, 0.18);
+  border-color: rgba(244, 67, 54, 0.25);
 }
 
 .status-banner--partial {
   color: var(--unknown);
   background: var(--unknown-bg);
-  border-color: rgba(245, 158, 11, 0.18);
+  border-color: rgba(255, 152, 0, 0.25);
 }
 
 .status-banner__dot {
@@ -84,9 +82,10 @@
 
 .services-list {
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
   overflow: hidden;
-  animation: fade-up 0.5s 0.2s ease both;
+  background-color: var(--surface);
+  animation: fade-up 0.4s 0.15s ease both;
 }
 
 /* ── Service row ── */
@@ -95,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.9rem 1.1rem;
+  padding: 12px 15px;
   border-bottom: 1px solid var(--border);
   transition: background 0.12s ease;
 }
@@ -111,20 +110,20 @@
 .service-left {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 10px;
 }
 
 .service-right {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 12px;
 }
 
 .service-name {
-  font-size: 0.875rem;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.85rem;
   font-weight: 500;
   color: var(--text);
-  letter-spacing: 0.02em;
 }
 
 /* ── Status dot ── */
@@ -139,13 +138,12 @@
 
 .status-dot--up {
   background: var(--up);
-  box-shadow: 0 0 5px var(--up);
 }
 
 .status-dot--up::after {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -3px;
   border-radius: 50%;
   border: 1px solid var(--up);
   opacity: 0;
@@ -154,74 +152,75 @@
 
 .status-dot--down {
   background: var(--down);
-  box-shadow: 0 0 5px var(--down);
 }
 
 .status-dot--unknown {
   background: var(--unknown);
-  box-shadow: 0 0 5px var(--unknown);
 }
 
 /* ── Status badge ── */
 
 .status-indicator {
-  font-size: 0.65rem;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.2rem 0.45rem;
-  border-radius: 2px;
+  padding: 2px 7px;
+  border-radius: 4px;
   border: 1px solid transparent;
 }
 
 .status-up {
   color: var(--up);
   background: var(--up-bg);
-  border-color: rgba(0, 223, 151, 0.2);
+  border-color: rgba(76, 175, 80, 0.3);
 }
 
 .status-down {
   color: var(--down);
   background: var(--down-bg);
-  border-color: rgba(255, 75, 92, 0.2);
+  border-color: rgba(244, 67, 54, 0.3);
 }
 
 .status-unknown {
   color: var(--unknown);
   background: var(--unknown-bg);
-  border-color: rgba(245, 158, 11, 0.2);
+  border-color: rgba(255, 152, 0, 0.3);
 }
 
 /* ── Latency ── */
 
 .latency {
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 0.75rem;
   font-weight: 400;
   color: var(--text-dim);
-  min-width: 4.5ch;
+  min-width: 5ch;
   text-align: right;
 }
 
 /* ── Loading / Error states ── */
 
 .state-message {
-  padding: 0.9rem 1.1rem;
-  font-size: 0.8rem;
+  padding: 12px 15px;
+  font-size: 0.85rem;
   color: var(--text-dim);
   border: 1px solid var(--border);
-  border-radius: 4px;
+  border-radius: 8px;
+  background: var(--surface);
   margin: 0;
-  animation: fade-up 0.5s 0.2s ease both;
+  animation: fade-up 0.4s 0.15s ease both;
 }
 
 /* ── Footer ── */
 
 .page-footer {
-  margin-top: 1.25rem;
-  font-size: 0.65rem;
+  margin-top: 12px;
+  font-size: 0.7rem;
   color: var(--text-muted);
-  letter-spacing: 0.08em;
-  animation: fade-up 0.5s 0.3s ease both;
+  letter-spacing: 0.05em;
+  animation: fade-up 0.4s 0.2s ease both;
 }
 
 /* ── Animations ── */
@@ -229,7 +228,7 @@
 @keyframes fade-up {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(6px);
   }
   to {
     opacity: 1;
@@ -239,10 +238,10 @@
 
 @keyframes blink {
   0%, 100% { opacity: 1; }
-  50%       { opacity: 0.35; }
+  50%       { opacity: 0.4; }
 }
 
 @keyframes ring-pulse {
-  0%   { transform: scale(0.8); opacity: 0.7; }
-  100% { transform: scale(2.8); opacity: 0; }
+  0%   { transform: scale(0.8); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
