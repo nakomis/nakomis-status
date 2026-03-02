@@ -1,8 +1,9 @@
 export interface HeartbeatResult {
   service: string
   url: string
-  status: 'up' | 'down' | 'unknown'
+  status: 'up' | 'down' | 'unknown' | 'warning'
   latencyMs?: number
+  detail?: string
 }
 
 export async function checkHeartbeat(service: string, url: string): Promise<HeartbeatResult> {

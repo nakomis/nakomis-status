@@ -12,6 +12,9 @@ function getBanner(results: HeartbeatResult[]): { label: string; modifier: strin
   if (results.some(r => r.status === 'down')) {
     return { label: 'Degraded performance', modifier: 'degraded' }
   }
+  if (results.some(r => r.status === 'warning')) {
+    return { label: 'Attention required', modifier: 'partial' }
+  }
   return { label: 'Partial outage', modifier: 'partial' }
 }
 

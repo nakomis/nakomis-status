@@ -61,9 +61,16 @@ resource "aws_iam_role_policy" "cloud_run_reader" {
           "cloudwatch:GetMetricStatistics",
           "cloudwatch:ListMetrics",
           "apigateway:GET",
+          "rds:DescribeDBInstances",
         ]
         Resource = "*"
-      }
+      },
+      {
+        # SSM GetParameter scoped to the nakomis-status parameter namespace
+        Effect   = "Allow"
+        Action   = ["ssm:GetParameter"]
+        Resource = "arn:aws:ssm:eu-west-2:*:parameter/nakomis-status/*"
+      },
     ]
   })
 }

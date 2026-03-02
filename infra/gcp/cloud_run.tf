@@ -20,6 +20,11 @@ resource "google_cloud_run_v2_service" "app" {
         value = "production"
       }
 
+      env {
+        name  = "AWS_READER_ROLE_ARN"
+        value = "arn:aws:iam::637423226886:role/nakomis-status-cloud-run-reader"
+      }
+
       resources {
         limits = {
           cpu    = "1"

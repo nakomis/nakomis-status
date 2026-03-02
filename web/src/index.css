@@ -12,10 +12,12 @@
   --up:         #4CAF50;
   --down:       #f44336;
   --unknown:    #ff9800;
+  --warning:    #ffc107;
 
   --up-bg:      rgba(76, 175, 80, 0.1);
   --down-bg:    rgba(244, 67, 54, 0.1);
   --unknown-bg: rgba(255, 152, 0, 0.1);
+  --warning-bg: rgba(255, 193, 7, 0.1);
 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;

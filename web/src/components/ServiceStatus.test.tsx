@@ -23,6 +23,26 @@ describe('ServiceStatus', () => {
     expect(screen.getByTestId('status-indicator')).toHaveClass('status-unknown')
   })
 
+  it('applies status-warning class when warning', () => {
+    render(<ServiceStatus service="nakom.is" status="warning" />)
+    expect(screen.getByTestId('status-indicator')).toHaveClass('status-warning')
+  })
+
+  it('shows warning indicator with ⚠ prefix', () => {
+    render(<ServiceStatus service="nakom.is" status="warning" />)
+    expect(screen.getByTestId('status-indicator')).toHaveTextContent('⚠ warning')
+  })
+
+  it('displays detail when provided', () => {
+    render(<ServiceStatus service="nakom.is" status="warning" detail="available" />)
+    expect(screen.getByText('available')).toBeInTheDocument()
+  })
+
+  it('does not display detail when not provided', () => {
+    render(<ServiceStatus service="nakom.is" status="up" />)
+    expect(screen.queryByText('available')).not.toBeInTheDocument()
+  })
+
   it('displays latency when provided', () => {
     render(<ServiceStatus service="nakom.is" status="up" latencyMs={42} />)
     expect(screen.getByText('42ms')).toBeInTheDocument()
