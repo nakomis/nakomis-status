@@ -1,0 +1,17 @@
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfvars
+terraform/*.tfplan
+
+# GCP credentials — never commit these
+*.json
+
+# Node
+node_modules/
+dist/
+dist-server/
+
+# Env
+.env
+.env.local
