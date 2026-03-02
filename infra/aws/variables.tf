@@ -1,6 +1,6 @@
 variable "aws_region" {
   description = "AWS region"
-  default     = "eu-west-1"
+  default     = "eu-west-2"
 }
 
 variable "gcp_compute_sa_id" {
