@@ -43,7 +43,7 @@ jobs:
         run: terraform init
 
       - name: Terraform plan
-        run: terraform plan -var="aws_profile=" -out=tfplan
+        run: terraform plan -out=tfplan
 
       - name: Terraform apply
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'

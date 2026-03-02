@@ -127,7 +127,7 @@ The AWS infra has a one-time bootstrap requirement: the GitHub→AWS OIDC role i
 ```bash
 cd infra/aws
 terraform init
-AWS_PROFILE=nakom.is-admin terraform apply
+AWS_PROFILE=nakom.is-admin terraform apply   # credentials via env var, not provider config
 # copy github_infra_role_arn from the outputs, then:
 gh secret set AWS_INFRA_ROLE_ARN --repo nakomis/nakomis-status --body "<arn>"
 ```

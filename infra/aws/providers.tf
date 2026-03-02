@@ -9,6 +9,7 @@ terraform {
 }
 
 provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
+  region = var.aws_region
+  # No profile set — in CI, credentials come from configure-aws-credentials via env vars.
+  # Locally, set AWS_PROFILE=nakom.is-admin before running terraform.
 }
