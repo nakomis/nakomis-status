@@ -12,3 +12,8 @@ output "domain_mapping_records" {
   description = "DNS records to create in Cloud DNS for the custom domain"
   value       = google_cloud_run_domain_mapping.app.status[0].resource_records
 }
+
+output "name_servers" {
+  description = "GCP nameservers for this zone — add as NS record in Route 53 to delegate status.nakom.is"
+  value       = google_dns_managed_zone.app.name_servers
+}
