@@ -3,9 +3,10 @@ terraform/.terraform/
 terraform/.terraform.lock.hcl
 terraform/terraform.tfvars
 terraform/*.tfplan
+terraform/tfplan
 
 # GCP credentials — never commit these
-*.json
+terraform-key.json
 
 # Node
 node_modules/
