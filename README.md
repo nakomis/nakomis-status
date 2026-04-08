@@ -4,6 +4,12 @@ Service status page for Nakomis Softworks projects, live at **[status.nakom.is](
 
 Deliberately hosted on **Google Cloud Platform** rather than AWS — keeping the status page independent of any AWS-wide issues that might affect the projects it monitors.
 
+## Support
+
+If you find this useful, please consider buying me a coffee:
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN)
+
 ## Architecture
 
 ```
@@ -133,3 +139,9 @@ gh secret set AWS_INFRA_ROLE_ARN --repo nakomis/nakomis-status --body "<arn>"
 ```
 
 After that, all subsequent changes to `infra/aws/` are applied automatically by CI.
+
+## Support
+
+If you find this useful, please consider buying me a coffee:
+
+[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN)
