@@ -8,7 +8,7 @@ Deliberately hosted on **Google Cloud Platform** rather than AWS — keeping the
 
 If you find this useful, please consider buying me a coffee:
 
-[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN)
+[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN&custom=nakomis-status)
 
 ## Architecture
 
@@ -144,4 +144,4 @@ After that, all subsequent changes to `infra/aws/` are applied automatically by 
 
 If you find this useful, please consider buying me a coffee:
 
-[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN)
+[![Donate with PayPal](https://www.paypalobjects.com/en_GB/i/btn/btn_donate_SM.gif)](https://www.paypal.com/donate?hosted_button_id=Q3BESC73EWVNN&custom=nakomis-status)
