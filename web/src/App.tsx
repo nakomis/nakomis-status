@@ -18,7 +18,8 @@ function getBanner(results: HeartbeatResult[]): { label: string; modifier: strin
   return { label: 'Partial outage', modifier: 'partial' }
 }
 
-export function App() {
+/** apiBase is empty when served by the status server itself, and status.nakom.is inside nakomis-shell. */
+export function App({ apiBase = '' }: { apiBase?: string } = {}) {
   const [results, setResults] = useState<HeartbeatResult[]>([])
   const [loadState, setLoadState] = useState<LoadState>('loading')
   const [lastUpdated, setLastUpdated] = useState<string | null>(null)
@@ -26,7 +27,7 @@ export function App() {
   useEffect(() => {
     async function refresh() {
       try {
-        const response = await fetch('/api/status')
+        const response = await fetch(`${apiBase}/api/status`)
         const data: HeartbeatResult[] = await response.json()
         setResults(data)
         setLoadState('ready')
@@ -45,7 +46,7 @@ export function App() {
     refresh()
     const interval = setInterval(refresh, 30_000)
     return () => clearInterval(interval)
-  }, [])
+  }, [apiBase])
 
   const banner = loadState === 'ready' ? getBanner(results) : null
 

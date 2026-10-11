@@ -1,0 +1,31 @@
+/* Scoped copy of index.css's variables for when Status runs inside nakomis-shell: the shell owns the page,
+   so nothing here may touch :root, body or *. */
+.status-remote {
+  --bg:            #282c34;
+  --surface:       #1f2329;
+  --surface-hover: #2a2f38;
+  --border:        #444;
+  --text:          #ffffff;
+  --text-dim:      rgba(255, 255, 255, 0.5);
+  --text-muted:    rgba(255, 255, 255, 0.3);
+
+  --up:         #4CAF50;
+  --down:       #f44336;
+  --unknown:    #ff9800;
+  --warning:    #ffc107;
+
+  --up-bg:      rgba(76, 175, 80, 0.1);
+  --down-bg:    rgba(244, 67, 54, 0.1);
+  --unknown-bg: rgba(255, 152, 0, 0.1);
+  --warning-bg: rgba(255, 193, 7, 0.1);
+
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.status-remote *,
+.status-remote *::before,
+.status-remote *::after {
+  box-sizing: border-box;
+}

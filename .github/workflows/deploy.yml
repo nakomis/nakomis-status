@@ -62,3 +62,42 @@ jobs:
           gcloud run services update nakomis-status \
             --image=$IMAGE \
             --region=${{ secrets.GCP_REGION }}
+
+  # The Status panel of nakomis-shell (app.{env}/status). Its data still comes from this Cloud Run service.
+  deploy-remote:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    strategy:
+      matrix:
+        include:
+          - env: sandbox
+            account: '975050268859'
+          - env: prod
+            account: '637423226886'
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run build:remote
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::${{ matrix.account }}:role/nakomis-nakomis-status-remote-ci-${{ matrix.env }}
+          aws-region: eu-west-2
+      - name: Publish to remotes/status
+        run: |
+          set -euo pipefail
+          bucket=$(aws ssm get-parameter --name /nakomis-shell/${{ matrix.env }}/bucket-name --query Parameter.Value --output text)
+          distribution=$(aws ssm get-parameter --name /nakomis-shell/${{ matrix.env }}/distribution-id --query Parameter.Value --output text)
+          aws s3 sync dist-remote/assets "s3://$bucket/remotes/status/assets/" --cache-control "public,max-age=31536000,immutable"
+          aws s3 sync dist-remote "s3://$bucket/remotes/status/" --exclude "assets/*" --cache-control "no-cache"
+          aws cloudfront create-invalidation --distribution-id "$distribution" --paths "/remotes/status/*" --query Invalidation.Id --output text
