@@ -1,5 +1,7 @@
 # nakomis-status
 
+<img src="docs/logo.png" alt="nakomis-status logo" width="200" align="right"/>
+
 Service status page for Nakomis Softworks projects, live at **[status.nakom.is](https://status.nakom.is)**.
 
 Deliberately hosted on **Google Cloud Platform** rather than AWS — keeping the status page independent of any AWS-wide issues that might affect the projects it monitors.
